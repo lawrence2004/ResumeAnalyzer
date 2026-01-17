@@ -43,10 +43,8 @@ public class ResumeAnalysisService {
             User user
     ) {
 
-        // 1️⃣ Extract resume text
         String resumeText = resumeTextExtractor.extract(file);
-
-        // 2️⃣ Save Resume entity
+     
         Resume resume = Resume.builder()
                 .fileName(file.getOriginalFilename())
                 .fileType(file.getContentType())
@@ -56,7 +54,6 @@ public class ResumeAnalysisService {
                 .build();
         resumeRepository.save(resume);
 
-        // 3️⃣ Save JobDescription entity
         JobDescription jobDescription = JobDescription.builder()
                 .companyName(companyName)
                 .title(jobTitle)
@@ -65,13 +62,10 @@ public class ResumeAnalysisService {
                 .build();
         jobDescriptionRepository.save(jobDescription);
 
-        // 4️⃣ Call Gemini AI
         String aiResponseJson = callGeminiAI(resumeText, jobDescriptionText);
 
-        // 5️⃣ Parse AI response
         Map<String, Object> aiResult = JsonUtil.parse(aiResponseJson);
 
-        // 6️⃣ Save ResumeAnalysis entity
         ResumeAnalysis analysis = ResumeAnalysis.builder()
                 .resume(resume)
                 .jobDescription(jobDescription)
@@ -84,12 +78,10 @@ public class ResumeAnalysisService {
                 .build();
 
         resumeAnalysisRepository.save(analysis);
-
-        // 7️⃣ Return response DTO
+     
         return ResumeAnalysisResponse.from(analysis);
     }
 
-    // 🔥 Gemini AI call
     private String callGeminiAI(String resumeText, String jobDescription) {
 
         String prompt = """
@@ -140,7 +132,7 @@ public class ResumeAnalysisService {
                 Map.class
         );
 
-        // Extract Gemini text response
+      
         Map<String, Object> candidate =
                 (Map<String, Object>) ((List<?>) response.getBody()
                         .get("candidates")).get(0);
