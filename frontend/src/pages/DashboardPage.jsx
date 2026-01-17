@@ -63,7 +63,6 @@ export const DashboardPage = () => {
     setError('');
   };
 
-  /* ================= SUBMIT ================= */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -86,7 +85,7 @@ export const DashboardPage = () => {
       setResult(analysisResult);
       setAnalyses((prev) => [analysisResult, ...prev]);
 
-      // Reset form
+      
       setResume(null);
       setCompanyName('');
       setJobTitle('');
