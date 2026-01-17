@@ -43,8 +43,8 @@ export const AnalysisResults = ({ result }) => {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#0284c7" /> {/* sky-600 */}
-                <stop offset="100%" stopColor="#9333ea" /> {/* purple-600 */}
+                <stop offset="0%" stopColor="#0284c7" />
+                <stop offset="100%" stopColor="#9333ea" />
               </linearGradient>
             </defs>
           </svg>
@@ -84,7 +84,6 @@ export const AnalysisResults = ({ result }) => {
 
   return (
     <div className="space-y-8 animate-slideUp">
-      {/* Header */}
       <div>
         <h2 className="text-3xl font-bold text-slate-900 flex items-center gap-2 mb-2">
           <BarChart3 className="text-sky-600" size={32} />
@@ -94,8 +93,6 @@ export const AnalysisResults = ({ result }) => {
           Your resume analysis is complete
         </p>
       </div>
-
-      {/* Scores Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white rounded-lg border border-slate-200 p-8 flex justify-center">
           <CircularProgress
@@ -117,15 +114,14 @@ export const AnalysisResults = ({ result }) => {
 
           <p className="text-sm text-slate-600 mt-4">
             {result.matchPercentage >= 75
-              ? '🎉 Excellent match! Your resume aligns well with the job description.'
+              ? 'Excellent match! Your resume aligns well with the job description.'
               : result.matchPercentage >= 50
-              ? '✅ Good match! Consider implementing the suggestions below.'
-              : '⚠️ Fair match. Review the missing skills and improvement tips.'}
+              ? 'Good match! Consider implementing the suggestions below.'
+              : 'Fair match. Review the missing skills and improvement tips.'}
           </p>
         </div>
       </div>
 
-      {/* Missing Skills */}
       {result.missingSkills.length > 0 && (
         <div className="bg-white rounded-lg border border-slate-200 p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
@@ -144,8 +140,6 @@ export const AnalysisResults = ({ result }) => {
           </div>
         </div>
       )}
-
-      {/* Suggested Keywords */}
       {result.suggestedKeywords.length > 0 && (
         <div className="bg-white rounded-lg border border-slate-200 p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
@@ -166,7 +160,6 @@ export const AnalysisResults = ({ result }) => {
         </div>
       )}
 
-      {/* Improvement Tips */}
       {result.improvementTips.length > 0 && (
         <div className="bg-white rounded-lg border border-slate-200 p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
