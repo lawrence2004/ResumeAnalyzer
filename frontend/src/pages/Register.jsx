@@ -46,7 +46,6 @@ export const RegisterPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-purple-50 flex items-center justify-center px-4 pt-20">
       <div className="w-full max-w-md animate-slideUp">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
             Create Account
@@ -56,7 +55,6 @@ export const RegisterPage = () => {
           </p>
         </div>
 
-        {/* Card */}
         <div className="bg-white rounded-xl border border-slate-200 shadow-lg p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
@@ -116,8 +114,6 @@ export const RegisterPage = () => {
               <ArrowRight size={18} />
             </Button>
           </form>
-
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-slate-200" />
@@ -136,8 +132,6 @@ export const RegisterPage = () => {
             Sign In
           </Link>
         </div>
-
-        {/* Back to Home */}
         <div className="text-center mt-6">
           <Link
             to="/"
